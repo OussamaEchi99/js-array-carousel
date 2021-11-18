@@ -32,6 +32,7 @@
     width: 100%;
     height: 100%;
     position: relative;
+    display: none;
 }
 
 .single_image img{
@@ -47,6 +48,10 @@
     width: 90%;
     text-align: right;
     color: white;
+}
+
+.single_image.active{
+    display: block;
 }
 
 /* THUMBS */

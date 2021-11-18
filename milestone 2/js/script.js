@@ -31,34 +31,40 @@ const text = [
 
 // POPOLO LE IMMAGINI,H2 E DESCRIZIONI CON IL FOR
 const singleImage = document.querySelector('.main_images_container');
-const singleTitle = document.getElementsByClassName('.image_description');
-const singleDescription = document.querySelector('.image_description');
-// const singleDescription = document.querySelector('.image_description');
+const ImageColumn = document.querySelector('.thumbs');
 
 for( let i = 0; i < items.length; i++ ) {
     const thisPath = items[i];
+    const thisTitle = title[i];
+    const thisText = text[i];
     
     // Popolare il contenitore di immagini
-    const newImage = `
+    const newDiv = `
     <div class="single_image">
-        <img src="${thisPath}" alt="Img ${i}">
+        <img src="${thisPath}" alt="Image ${i}">
 
         <div class="image_description">
-            
+            <h2>${thisTitle}</h2>
+            <p>${thisText}</p>
         </div>
     </div>
     `;
 
-    singleImage.innerHTML += newImage;
+    singleImage.innerHTML += newDiv;
+
+    const newImageSelected = `
+    <div class="single_thumbs">
+        <img src="${thisPath}" alt="Image ${i}">
+    </div>
+    `;
+
+    ImageColumn.innerHTML += newImageSelected;
 
 }
 
-for( let i = 0; i < title.length; i++ ) {
-    const thisTitle = title[i];
 
-    const newTitle = `
-    <h2>${thisTitle}</h2>
-    `
-
-    singleTitle.innerHTML += newTitle;
-}
+let activeImage = 0;
+const allImages = document.getElementsByClassName('single_image');
+const imageSelected = document.getElementsByClassName('single_thumbs');
+allImages[activeImage].classList.add('active');
+imageSelected[activeImage].classList.add('active');
